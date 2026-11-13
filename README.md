@@ -46,3 +46,14 @@ An honest, descriptive User-Agent with real contact information is required; pla
 Official SEC EDGAR XBRL Company Facts API: https://www.sec.gov/search-filings/edgar-application-programming-interfaces
 
 SEC data is public. Respect SEC fair-access guidelines and identify your application in the User-Agent.
+
+## Current end-to-end annual financial research command
+
+```bash
+export SEC_USER_AGENT="FilingLens actual-contact@yourdomain.com"
+python -m filinglens.research --cik 0000320193
+```
+
+The command uses live SEC Company Facts unless a valid cache exists, selects annual-duration observations reported on 10-Ks, computes only consecutive-period growth, and preserves accession numbers. It is a **numerical research baseline**. It does not yet ingest full narrative documents, provide hybrid retrieval/RAG, expose a deployed frontend, or demonstrate benchmarked analyst-time savings. Fiscal-period and restatement logic require additional validation before investment use.
+
+Run tests with `pytest -q`. Tests use fixtures and do not query the SEC.
