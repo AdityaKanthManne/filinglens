@@ -57,3 +57,9 @@ python -m filinglens.research --cik 0000320193
 The command uses live SEC Company Facts unless a valid cache exists, selects annual-duration observations reported on 10-Ks, computes only consecutive-period growth, and preserves accession numbers. It is a **numerical research baseline**. It does not yet ingest full narrative documents, provide hybrid retrieval/RAG, expose a deployed frontend, or demonstrate benchmarked analyst-time savings. Fiscal-period and restatement logic require additional validation before investment use.
 
 Run tests with `pytest -q`. Tests use fixtures and do not query the SEC.
+
+## Quant research extension (experimental)
+
+`filinglens.event_study` exposes `abnormal_returns(asset_returns, benchmark_returns)` and `event_summary(...)` for market-adjusted event-window returns and a descriptive t statistic. Run `pytest -q tests/test_event_study.py`. **Not yet connected to historical price ingestion or SEC filing-event alignment.** Event selection, timing, overlapping windows, transaction costs and out-of-sample testing remain requirements before drawing alpha conclusions.
+
+**Planned next:** point-in-time filing/price joins, transparent event-window selection, bootstrap confidence intervals, transaction-cost sensitivity, walk-forward signal backtests, and RAG grounding evaluations.
